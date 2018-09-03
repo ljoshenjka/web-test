@@ -22,7 +22,7 @@ public class SeatPicker extends BaseField {
         return WebDriverUtil.getElements(getWebElement(), By.xpath(locSeatRow)).size();
     }
 
-    public SeatRow getRowByNumber(Integer rowNumber) {
+    public SeatRow getSeatRowByNumber(Integer rowNumber) {
         int rowCount = getSeatRowCount();
         if (rowCount > 0 && rowCount >= rowNumber) {
             // because in cinema 1st row is closer to screen
@@ -34,7 +34,7 @@ public class SeatPicker extends BaseField {
         }
     }
 
-    class SeatRow extends BaseField {
+    public class SeatRow extends BaseField {
 
         private String locAvailableSeat = ".//div[@class[contains(.,'seatPlanGrid__cell--empty ')]]";
 

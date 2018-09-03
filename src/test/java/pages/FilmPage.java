@@ -12,7 +12,7 @@ import java.util.List;
 
 public class FilmPage {
     public static final Label lblFilmName = new Label(By.tagName("h1"));
-    public static final Button btnBuy = new Button(By.className("filmSchedule__buy"));
+    public static final Button btnTickets = new Button(By.className("filmSchedule__buy"));
     public static final SeatPicker seatPicker = new SeatPicker(By.className("seatPlanGrid"));
     public static final Label lblPeopleGoing = new Label(By.xpath("//div[@class='pageSeatPlan__peopleGoing']/span"));
     public static final Voucher voucher = new Voucher(By.xpath("//div[@class='pageSeatPlan__discounts__giftCard__body']"));
@@ -21,9 +21,9 @@ public class FilmPage {
     // TODO: change this to DatePicker element
     public static final Button btnDatePicker = new Button(By.cssSelector(".flatpickr-input"));
 
-    private String locAvailableDates = "//span[not(@class[contains(.,'disabled')]) and @class[contains(.,'flatpickr-day')]]";
+    private static final String locAvailableDates = "//span[not(@class[contains(.,'disabled')]) and @class[contains(.,'flatpickr-day')]]";
 
-    private List<Button> getAvailableDates() {
+    public static List<Button> getAvailableDates() {
         int dayCount = WebDriverUtil.getElements(By.xpath(locAvailableDates)).size();
         List<Button> itemList = new ArrayList<>();
         for (int i = 1; i <= dayCount; i++) {
