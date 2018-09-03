@@ -7,6 +7,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 import java.util.List;
@@ -21,6 +23,8 @@ public class WebDriverUtil {
     public static Actions performAction = null;
 
     private static final int timeout = Integer.parseInt(ConfigReader.getInstance().getValue(PropertyConfigs.APP_WAIT));
+    private static final Logger logger = LoggerFactory.getLogger(BaseStep.class);
+
 
     public static WebDriver getDriver() {
         return drivers.get();
@@ -132,5 +136,9 @@ public class WebDriverUtil {
         } catch (Exception e) {
 
         }
+    }
+
+    public static Logger getLogger() {
+        return logger;
     }
 }

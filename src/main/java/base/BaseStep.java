@@ -10,13 +10,8 @@ import java.util.Map;
  * Placeholder to share objects between steps
  */
 public class BaseStep {
-    private static final Logger logger = LoggerFactory.getLogger(BaseStep.class);
 
     private static final ThreadLocal<Map<String, Object>> testsData = ThreadLocal.withInitial(HashMap::new);
-
-    public static Logger getLogger() {
-        return logger;
-    }
 
     public static void saveData(String key, Object value) {
         testsData.get().put(key, value);
