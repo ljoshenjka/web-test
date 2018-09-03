@@ -5,12 +5,12 @@ import elements.Label;
 import elements.base.BaseField;
 import org.openqa.selenium.By;
 
-public class ErrorNotification extends BaseField {
+public class Notification extends BaseField {
 
     public Button btnClose = new Button(this, By.className("notification__close"));
     public Label lblErrorMsg = new Label(this, By.tagName("p"));
 
-    public ErrorNotification(By locator) {
+    public Notification(By locator) {
         super(locator);
     }
 }

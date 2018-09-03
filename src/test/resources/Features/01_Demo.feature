@@ -6,14 +6,15 @@ Feature: Configure cinema ticket
   Make all necessary ticket configurations
 
   Scenario: Configure 2 tickets with random seats
-    Given user logs in into app with credentials
+    Given user opens app link
+    And user logs in into app with credentials
       | email    | neotech@mailinator.com |
       | password | mysterious-lips-class  |
-    When user opens "My Personal Data"
-    And set personal name
+    When user opens "My Personal Data" from user menu
+    And submit personal name
       | name    | Neo  |
       | surname | Tech |
-    Then user has correct personal name
+    Then personal data is updated
     When user navigates to "Movies" section
     And select "In Theatre" from movie filter
     Then movie list header is "In Theatre"
