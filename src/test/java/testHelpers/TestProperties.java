@@ -12,4 +12,9 @@ public class TestProperties {
     public static final String USER_MENU_PROFILE = "My Profile";
     public static final String USER_MENU_DATA = "My Personal Data";
     public static final String USER_MENU_LOGOUT = "Log out";
+
+    // Navigation section names
+    public static final String NAV_MOVIES_EN = "Movies";
+    public static final String NAV_SCHEDULE_EN = "Schedule";
+    public static final String NAV_GOODIES_EN = "Goodies";
 }

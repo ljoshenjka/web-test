@@ -1,13 +1,14 @@
 package steps;
 
 import base.BaseStep;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import pages.App;
 
 import java.util.Map;
+
+import static testHelpers.TestProperties.*;
 
 public class CommonSteps extends BaseStep {
 
@@ -26,6 +27,16 @@ public class CommonSteps extends BaseStep {
 
     @When("^user navigates to \"([^\"]*)\" section$")
     public void userNavigatesToSection(String sectionName) throws Throwable {
-        
+        switch (sectionName) {
+            case NAV_MOVIES_EN:
+                App.btnMovies.click();
+                break;
+            case NAV_SCHEDULE_EN:
+                App.btnSchedule.click();
+                break;
+            case NAV_GOODIES_EN:
+                App.btnGoodies.click();
+                break;
+        }
     }
 }

@@ -16,7 +16,7 @@ Feature: Configure cinema ticket
       | surname | Tech |
     Then personal data is updated
     When user navigates to "Movies" section
-    And select "In Theatre" from movie filter
+    And select status "In Theatre" from movie filter
     Then movie list header is "In Theatre"
     When user select random movie from movie list
     And set random available date

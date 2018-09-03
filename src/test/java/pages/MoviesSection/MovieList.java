@@ -21,19 +21,19 @@ public class MovieList extends BaseField {
 
     public List<MovieItem> getMovies() {
         List<MovieItem> itemList = new ArrayList<>();
-        int itemCount = getItemsCount();
+        int itemCount = getMovieCount();
         for (int i = 1; i <= itemCount; i++) {
-            itemList.add(getItemByIndex(i));
+            itemList.add(getMovieByIndex(i));
         }
         return itemList;
 
     }
 
-    public Integer getItemsCount() {
+    public Integer getMovieCount() {
         return WebDriverUtil.getElements(locator, By.xpath(movieItemLocator)).size();
     }
 
-    public MovieItem getItemByIndex(int index) {
+    public MovieItem getMovieByIndex(int index) {
         return new MovieItem(this, By.xpath(String.format("%s[%d]", movieItemLocator, index)));
     }
 }

@@ -34,7 +34,7 @@ public class MovieFilter extends BaseField {
                 i = 4;
                 break;
         }
-        WebDriverUtil.getElement(getWebElement(), By.xpath(String.format("%s[%d]", locMovieStatus, i)));
+        WebDriverUtil.getElement(getWebElement(), By.xpath(String.format("%s[%d]", locMovieStatus, i))).click();
     }
 
     public void selectScreen(String movieScreen) {
