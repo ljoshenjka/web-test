@@ -4,9 +4,8 @@ import base.WebDriverUtil;
 import elements.Button;
 import elements.Label;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import pages.MoviesSection.MovieItem;
 import pages.components.SeatPicker;
+import pages.components.Voucher;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +14,10 @@ public class FilmPage {
     public static final Label lblFilmName = new Label(By.tagName("h1"));
     public static final Button btnBuy = new Button(By.className("filmSchedule__buy"));
     public static final SeatPicker seatPicker = new SeatPicker(By.className("seatPlanGrid"));
-
+    public static final Label lblPeopleGoing = new Label(By.xpath("//div[@class='pageSeatPlan__peopleGoing']/span"));
+    public static final Voucher voucher = new Voucher(By.xpath("//div[@class='pageSeatPlan__discounts__giftCard__body']"));
+    public static final Button btnPay = new Button(By.xpath("//div[@class='pageSeatPlan__addToBasket']//button"));
+    public static final Label lblFullPrice = new Label(By.cssSelector(".pageSeatPlan__order__totalPrice"));
     // TODO: change this to DatePicker element
     public static final Button btnDatePicker = new Button(By.cssSelector(".flatpickr-input"));
 
@@ -29,5 +31,4 @@ public class FilmPage {
         }
         return itemList;
     }
-
 }
