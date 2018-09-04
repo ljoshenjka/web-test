@@ -26,10 +26,11 @@ Feature: Configure cinema ticket
       | 5 |
       | 6 |
     Then 2 people are going
+    And full ticket price is shown
     When user enters voucher "$RANDOM"
     Then voucher error message is shown
     When user submit seat selection
-    Then payment page is shown
+    Then ordering page is shown
     And correct ticket price is shown
     And correct number of tickets is shown
     When user selects to change order
@@ -40,7 +41,7 @@ Feature: Configure cinema ticket
       | 6 |
     Then 1 people are going
     When user submit seat selection
-    Then payment page is shown
+    Then ordering page is shown
     And correct ticket price is shown
     And correct number of tickets is shown
     And correct payment methods are shown
@@ -49,4 +50,3 @@ Feature: Configure cinema ticket
       | seb         |
       | citadele    |
       | credit card |
-

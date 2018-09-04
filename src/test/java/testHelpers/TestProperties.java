@@ -17,4 +17,8 @@ public class TestProperties {
     public static final String NAV_MOVIES_EN = "Movies";
     public static final String NAV_SCHEDULE_EN = "Schedule";
     public static final String NAV_GOODIES_EN = "Goodies";
+
+    // Film ordering section
+    public static final String FILM_MY_ORDER_EN = "My Order";
+
 }

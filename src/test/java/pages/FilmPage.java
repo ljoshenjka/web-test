@@ -22,6 +22,7 @@ public class FilmPage {
     // TODO: change this to DatePicker element
     public static final Button btnDatePicker = new Button(By.cssSelector(".flatpickr-input"));
     public static final Notification errorNotification = new Notification(By.cssSelector(".notification--error"));
+    public static final Label lblTotalPrice = new Label(By.xpath("//div[@class[contains(.,'pageSeatPlan__order__totalPrice')]]//strong"));
 
     private static final String locAvailableDates = "//span[not(@class[contains(.,'disabled')]) and @class[contains(.,'flatpickr-day')]]";
 

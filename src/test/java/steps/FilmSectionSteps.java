@@ -58,6 +58,7 @@ public class FilmSectionSteps extends BaseStep {
     @Then("^(.*) people are going$")
     public void peopleAreGoing(String peopleNumber) throws Throwable {
         Assert.assertEquals("Wrong number of people going", peopleNumber, FilmPage.lblPeopleGoing.getValue());
+        saveData("ticket_number", FilmPage.lblPeopleGoing.getValue());
     }
 
     @When("^user enters voucher \"([^\"]*)\"$")
@@ -77,5 +78,16 @@ public class FilmSectionSteps extends BaseStep {
     @When("^user submit seat selection$")
     public void userSubmitSeatSelection() throws Throwable {
         FilmPage.btnPay.click();
+    }
+
+    @And("^full ticket price is shown$")
+    public void fullTicketPriceIsShown() throws Throwable {
+        Assert.assertTrue("Full ticket price not shown", FilmPage.lblFullPrice.isDisplayedWithWait());
+        saveData("ticket_price", FilmPage.lblFullPrice.getValue());
+    }
+
+    @When("^user deselect all seats$")
+    public void userDeselectAllSeats() throws Throwable {
+
     }
 }
