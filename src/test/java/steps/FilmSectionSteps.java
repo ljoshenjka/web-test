@@ -88,6 +88,6 @@ public class FilmSectionSteps extends BaseStep {
 
     @When("^user deselect all seats$")
     public void userDeselectAllSeats() throws Throwable {
-
+        FilmPage.seatPicker.deselectAllSeats();
     }
 }

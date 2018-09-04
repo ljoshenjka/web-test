@@ -4,11 +4,15 @@ import base.WebDriverUtil;
 import elements.Button;
 import elements.base.BaseField;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class SeatPicker extends BaseField {
 
 
     private String locSeatRow = ".//div[@class='seatPlanGrid__row']";
+    private String locReservedSeat = ".//div[@class[contains(.,'seatPlanGrid__cell--reserved ')]]";
 
     public SeatPicker(BaseField parent, By locator) {
         super(parent, locator);
@@ -31,6 +35,14 @@ public class SeatPicker extends BaseField {
         } else {
             WebDriverUtil.getLogger().error("No such seat row in cinema");
             return null;
+        }
+    }
+
+    public void deselectAllSeats() {
+        List<WebElement> reservedSeats = WebDriverUtil.getElements(locator, By.xpath(locReservedSeat));
+        for (WebElement seat : reservedSeats) {
+            seat.click();
+            WebDriverUtil.waitForPageToLoad();
         }
     }
 

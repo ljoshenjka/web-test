@@ -21,4 +21,10 @@ public class TestProperties {
     // Film ordering section
     public static final String FILM_MY_ORDER_EN = "My Order";
 
+    // Payment methods
+    public static final String PAYMENT_SWED = "swedbank";
+    public static final String PAYMENT_LUMINOR = "luminor";
+    public static final String PAYMENT_SEB = "seb";
+    public static final String PAYMENT_CITADELE = "citadele";
+    public static final String PAYMENT_CREDIT_CARD = "credit card";
 }
