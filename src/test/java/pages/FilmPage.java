@@ -4,6 +4,7 @@ import base.WebDriverUtil;
 import elements.Button;
 import elements.Label;
 import org.openqa.selenium.By;
+import pages.components.Notification;
 import pages.components.SeatPicker;
 import pages.components.Voucher;
 
@@ -20,6 +21,7 @@ public class FilmPage {
     public static final Label lblFullPrice = new Label(By.cssSelector(".pageSeatPlan__order__totalPrice"));
     // TODO: change this to DatePicker element
     public static final Button btnDatePicker = new Button(By.cssSelector(".flatpickr-input"));
+    public static final Notification errorNotification = new Notification(By.cssSelector(".notification--error"));
 
     private static final String locAvailableDates = "//span[not(@class[contains(.,'disabled')]) and @class[contains(.,'flatpickr-day')]]";
 

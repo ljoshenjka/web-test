@@ -11,6 +11,7 @@ import pages.FilmPage;
 import pages.components.SeatPicker.SeatRow;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class FilmSectionSteps extends BaseStep {
@@ -52,5 +53,29 @@ public class FilmSectionSteps extends BaseStep {
             int randomSeat = ThreadLocalRandom.current().nextInt(1, seatRow.getAvailableSeatsCount() + 1);
             seatRow.getSeatByNumber(randomSeat).click();
         }
+    }
+
+    @Then("^(.*) people are going$")
+    public void peopleAreGoing(String peopleNumber) throws Throwable {
+        Assert.assertEquals("Wrong number of people going", peopleNumber, FilmPage.lblPeopleGoing.getValue());
+    }
+
+    @When("^user enters voucher \"([^\"]*)\"$")
+    public void userEntersVoucher(String voucherText) throws Throwable {
+        if (voucherText.equals("$RANDOM")) {
+            voucherText = UUID.randomUUID().toString().replaceAll("-", "");
+        }
+        FilmPage.voucher.txbCode.setValue(voucherText);
+        FilmPage.voucher.btnApply.click();
+    }
+
+    @Then("^voucher error message is shown$")
+    public void voucherErrorMessageIsShown() throws Throwable {
+        Assert.assertTrue("Error notification not shown", FilmPage.errorNotification.isDisplayedWithWait());
+    }
+
+    @When("^user submit seat selection$")
+    public void userSubmitSeatSelection() throws Throwable {
+        FilmPage.btnPay.click();
     }
 }
