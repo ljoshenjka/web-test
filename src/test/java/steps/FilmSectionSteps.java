@@ -7,6 +7,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import elements.Button;
 import org.junit.Assert;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.FilmPage;
 import pages.components.SeatPicker.SeatRow;
 
@@ -18,10 +19,12 @@ public class FilmSectionSteps extends BaseStep {
 
     @And("^set random available date$")
     public void setRandomAvailableDate() throws Throwable {
+        WebDriverUtil.wait.until(driver -> FilmPage.btnTickets.isDisplayed());
         FilmPage.btnDatePicker.click();
         List<Button> dateList = FilmPage.getAvailableDates();
         int randomDate = ThreadLocalRandom.current().nextInt(1, dateList.size() + 1);
         dateList.get(randomDate).click();
+        WebDriverUtil.sleep(500);
     }
 
     @And("^user start buying tickets$")
@@ -37,7 +40,7 @@ public class FilmSectionSteps extends BaseStep {
     @When("^user select (\\d+) random seats from rows$")
     public void userSelectRandomSeatsFromRows(int seatsNumber, List<Integer> rows) throws Throwable {
         int rowCount = FilmPage.seatPicker.getSeatRowCount();
-        for (int i = 0; i < seatsNumber; i++) {
+        for (Integer i = 1; i <= seatsNumber; i++) {
             SeatRow seatRow = null;
             for (int row : rows) {
                 if (row <= rowCount) {
@@ -52,6 +55,8 @@ public class FilmSectionSteps extends BaseStep {
             }
             int randomSeat = ThreadLocalRandom.current().nextInt(1, seatRow.getAvailableSeatsCount() + 1);
             seatRow.getSeatByNumber(randomSeat).click();
+            WebDriverUtil.waitForPageToLoad();
+            WebDriverUtil.wait.until(ExpectedConditions.attributeToBe(FilmPage.lblPeopleGoing.getWebElement(), "value", i.toString()));
         }
     }
 

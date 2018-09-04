@@ -15,13 +15,16 @@ public abstract class ClickableField extends BaseField {
     }
 
     public Boolean isEnabled() {
+        WebDriverUtil.waitForPageToLoad();
         return getWebElement().getAttribute("disabled") == null;
     }
 
     public void click() {
         try {
+            WebDriverUtil.waitForPageToLoad();
             getWebElement().click();
         } catch (WebDriverException e) {
+            WebDriverUtil.waitForPageToLoad();
             WebDriverUtil.scrollTo(getWebElement());
             WebDriverUtil.wait.until(ExpectedConditions.elementToBeClickable(locator));
             getWebElement().click();

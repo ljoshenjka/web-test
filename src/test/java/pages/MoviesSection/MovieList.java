@@ -34,6 +34,6 @@ public class MovieList extends BaseField {
     }
 
     public MovieItem getMovieByIndex(int index) {
-        return new MovieItem(this, By.xpath(String.format("%s[%d]", movieItemLocator, index)));
+        return new MovieItem(this, By.xpath(String.format("(%s)[%d]", movieItemLocator, index)));
     }
 }

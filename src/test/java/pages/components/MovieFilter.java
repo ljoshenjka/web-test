@@ -35,6 +35,8 @@ public class MovieFilter extends BaseField {
                 break;
         }
         WebDriverUtil.getElement(getWebElement(), By.xpath(String.format("%s[%d]", locMovieStatus, i))).click();
+        // TODO: change this to normal wait
+        WebDriverUtil.sleep(3000);
     }
 
     public void selectScreen(String movieScreen) {

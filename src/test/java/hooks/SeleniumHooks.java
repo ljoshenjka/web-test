@@ -50,6 +50,7 @@ public class SeleniumHooks {
         } else {
             WebDriverUtil.getLogger().info("Scenario '" + scenario.getName() + "' PASSED");
         }
+        WebDriverUtil.getDriver().manage().deleteAllCookies();
         try {
             WebDriverUtil.getDriver().quit();
         } catch (WebDriverException we) {

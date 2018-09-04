@@ -1,6 +1,7 @@
 package steps;
 
 import base.BaseStep;
+import base.WebDriverUtil;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -17,6 +18,7 @@ public class UserMenuSteps extends BaseStep {
     public void setPersonalName(Map<String, String> personalName) throws Throwable {
         App.personalDataPopup.txbName.setValue(personalName.get("name"));
         App.personalDataPopup.txbSurname.setValue(personalName.get("surname"));
+        WebDriverUtil.sleep(1000);
         App.personalDataPopup.btnUpdateProfile.click();
     }
 
@@ -38,5 +40,6 @@ public class UserMenuSteps extends BaseStep {
     @Then("^personal data is updated$")
     public void personalDataIsUpdated() throws Throwable {
         Assert.assertTrue("Personal data was not changed", App.sucessNotification.isDisplayedWithWait());
+        App.sucessNotification.btnClose.click();
     }
 }

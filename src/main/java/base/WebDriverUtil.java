@@ -81,6 +81,7 @@ public class WebDriverUtil {
     }
 
     public static List<WebElement> getElements(By locator) {
+        waitForPageToLoad();
         try {
             return getDriver().findElements(locator);
         } catch (WebDriverException e) {
@@ -90,6 +91,7 @@ public class WebDriverUtil {
     }
 
     public static List<WebElement> getElements(WebElement parent, By locator) {
+        waitForPageToLoad();
         try {
             return parent.findElements(locator);
         } catch (WebDriverException e) {
@@ -99,6 +101,7 @@ public class WebDriverUtil {
     }
 
     public static List<WebElement> getElements(By parentLocator, By childLocator) {
+        waitForPageToLoad();
         WebElement parent = getElement(parentLocator);
         return getElements(parent, childLocator);
     }
