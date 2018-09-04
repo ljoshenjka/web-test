@@ -40,10 +40,20 @@ public class SeatPicker extends BaseField {
 
     public void deselectAllSeats() {
         List<WebElement> reservedSeats = WebDriverUtil.getElements(locator, By.xpath(locReservedSeat));
-        for (WebElement seat : reservedSeats) {
-            seat.click();
-            WebDriverUtil.waitForPageToLoad();
+        int initialNumber = reservedSeats.size();
+        if (initialNumber > 0) {
+            for (int i = 1; i <= initialNumber; i++) {
+                reservedSeats.get(i - 1).click();
+                WebDriverUtil.waitForPageToLoad();
+                waitForDeselect(initialNumber - i);
+            }
+        } else {
+            WebDriverUtil.getLogger().warn("Nothing to deselect");
         }
+    }
+
+    private void waitForDeselect(int expectedSelectedAmount) {
+        WebDriverUtil.wait.until(driver -> WebDriverUtil.getElements(locator, By.xpath(locReservedSeat)).size() == expectedSelectedAmount);
     }
 
     public class SeatRow extends BaseField {

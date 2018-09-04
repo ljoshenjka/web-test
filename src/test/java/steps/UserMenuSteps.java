@@ -20,6 +20,7 @@ public class UserMenuSteps extends BaseStep {
         App.personalDataPopup.txbSurname.setValue(personalName.get("surname"));
         WebDriverUtil.sleep(1000);
         App.personalDataPopup.btnUpdateProfile.click();
+        WebDriverUtil.wait.until(driver -> !App.personalDataPopup.isDisplayed());
     }
 
     @When("^user opens \"([^\"]*)\" from user menu$")

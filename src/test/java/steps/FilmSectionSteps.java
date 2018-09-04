@@ -22,7 +22,7 @@ public class FilmSectionSteps extends BaseStep {
         WebDriverUtil.wait.until(driver -> FilmPage.btnTickets.isDisplayed());
         FilmPage.btnDatePicker.click();
         List<Button> dateList = FilmPage.getAvailableDates();
-        int randomDate = ThreadLocalRandom.current().nextInt(1, dateList.size() + 1);
+        int randomDate = ThreadLocalRandom.current().nextInt(1, dateList.size());
         dateList.get(randomDate).click();
         WebDriverUtil.sleep(500);
     }
@@ -56,7 +56,7 @@ public class FilmSectionSteps extends BaseStep {
             int randomSeat = ThreadLocalRandom.current().nextInt(1, seatRow.getAvailableSeatsCount() + 1);
             seatRow.getSeatByNumber(randomSeat).click();
             WebDriverUtil.waitForPageToLoad();
-            WebDriverUtil.wait.until(ExpectedConditions.attributeToBe(FilmPage.lblPeopleGoing.getWebElement(), "value", i.toString()));
+            WebDriverUtil.wait.until(ExpectedConditions.attributeToBe(FilmPage.lblPeopleGoing.getWebElement(), "textContent", i.toString()));
         }
     }
 
@@ -87,6 +87,8 @@ public class FilmSectionSteps extends BaseStep {
 
     @And("^full ticket price is shown$")
     public void fullTicketPriceIsShown() throws Throwable {
+        // TODO: temporary sleep because of full price value update; change to wait
+        WebDriverUtil.sleep(500);
         Assert.assertTrue("Full ticket price not shown", FilmPage.lblFullPrice.isDisplayedWithWait());
         saveData("ticket_price", FilmPage.lblFullPrice.getValue());
     }

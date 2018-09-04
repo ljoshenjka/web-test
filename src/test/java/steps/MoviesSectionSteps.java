@@ -1,7 +1,6 @@
 package steps;
 
 import base.BaseStep;
-import base.WebDriverUtil;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -24,7 +23,7 @@ public class MoviesSectionSteps extends BaseStep {
 
     @When("^user select random movie from movie list$")
     public void userSelectRandomMovieFromMovieList() throws Throwable {
-        int randomMovieNumber = ThreadLocalRandom.current().nextInt(1, MoviesPage.movieList.getMovieCount() + 1);
+        int randomMovieNumber = ThreadLocalRandom.current().nextInt(1, MoviesPage.movieList.getMovieCount());
         MoviesPage.movieList.getMovieByIndex(randomMovieNumber).click();
     }
 }

@@ -40,6 +40,7 @@ Feature: Configure cinema ticket
       | 5 |
       | 6 |
     Then 1 people are going
+    And full ticket price is shown
     When user submit seat selection
     Then ordering page is shown
     And correct ticket price is shown

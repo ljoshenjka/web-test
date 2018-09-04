@@ -25,8 +25,8 @@ public abstract class ClickableField extends BaseField {
             getWebElement().click();
         } catch (WebDriverException e) {
             WebDriverUtil.waitForPageToLoad();
-            WebDriverUtil.scrollTo(getWebElement());
             WebDriverUtil.wait.until(ExpectedConditions.elementToBeClickable(locator));
+            WebDriverUtil.scrollTo(getWebElement());
             getWebElement().click();
         }
     }
