@@ -1,5 +1,6 @@
 package pages;
 
+import base.WebDriverUtil;
 import constants.PropertyConfigs;
 import elements.Button;
 import helpers.ConfigReader;
@@ -37,6 +38,7 @@ public class App {
         btnLatvianCinamon.click();
         if (infoNotification.isDisplayed()) {
             infoNotification.btnClose.click();
+            WebDriverUtil.wait.until(driver -> !infoNotification.isDisplayed());
         }
     }
 }
