@@ -2,6 +2,8 @@ package base;
 
 import constants.PropertyConfigs;
 import helpers.ConfigReader;
+import helpers.DateHelper;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -10,6 +12,8 @@ import org.openqa.selenium.support.ui.Wait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -126,10 +130,6 @@ public class WebDriverUtil {
         getJsExecutor().executeScript(scrollElementIntoMiddle, element);
     }
 
-    public static byte[] getScreenshot() {
-        return ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES);
-    }
-
     public static void sleep(Integer miliseconds) {
         try {
             Thread.sleep(miliseconds);
@@ -140,5 +140,23 @@ public class WebDriverUtil {
 
     public static Logger getLogger() {
         return logger;
+    }
+
+    public static String writeScreenshotToFile(byte[] screen, String nameTemplate, String path) {
+        try {
+            if (path == null) {
+                path = "./target/screenshots/" + nameTemplate + "_" + DateHelper.getTodaysDateTime() + ".png";
+            }
+            FileUtils.writeByteArrayToFile(new File(path), screen);
+
+        } catch (IOException e) {
+            path = "Failed to capture screenshot: " + e.getMessage();
+        }
+
+        return path;
+    }
+
+    public static byte[] getScreenshot() {
+        return ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES);
     }
 }
